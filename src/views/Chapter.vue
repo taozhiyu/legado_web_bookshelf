@@ -533,7 +533,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 >>> .pop-setting {
   margin-left: 68px;
   top: 0;

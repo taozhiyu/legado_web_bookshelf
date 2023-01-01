@@ -1,0 +1,15 @@
+@mixin light {
+    :root {
+        --app-text-color: #2c3e50;
+    }
+}
+
+html[data-theme='light'] {
+    @include light;
+}
+
+html[data-theme='auto'] {
+    @media (prefers-color-scheme: light) {
+        @include light;
+    }
+}

@@ -297,7 +297,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 .index-wrapper {
   height: 100%;
   width: 100%;
@@ -308,7 +308,7 @@ export default {
     width: 260px;
     min-width: 260px;
     padding: 48px 36px;
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
 
     .navigation-title {
       font-size: 24px;
@@ -331,7 +331,7 @@ export default {
 
         >>> .el-input__inner {
           border-radius: 50px;
-          border-color: #E3E3E3;
+          border-color: #e3e3e3;
         }
       }
     }
@@ -400,12 +400,12 @@ export default {
 
     >>> .el-icon-loading {
       font-size: 36px;
-      color: #B5B5B5;
+      color: #b5b5b5;
     }
 
     >>> .el-loading-text {
       font-weight: 500;
-      color: #B5B5B5;
+      color: #b5b5b5;
     }
 
     .books-wrapper {
@@ -417,7 +417,6 @@ export default {
         justify-content: space-around;
         grid-gap: 10px;
         margin: 48px 0;
-
 
         .book {
           user-select: none;
@@ -452,7 +451,7 @@ export default {
               width: fit-content;
               font-size: 16px;
               font-weight: 700;
-              color: #33373D;
+              color: #33373d;
             }
 
             .sub {
@@ -467,7 +466,9 @@ export default {
               }
             }
 
-            .intro, .dur-chapter, .last-chapter {
+            .intro,
+            .dur-chapter,
+            .last-chapter {
               color: #969ba3;
               font-size: 13px;
               margin-top: 3px;
@@ -492,24 +493,30 @@ export default {
       .wrapper:last-child {
         margin-right: auto;
       }
-      .wrapper:after{
+      .wrapper:after {
         content: " ";
         position: absolute;
         bottom: 0;
         width: 100%;
         height: 48px;
-        background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255 255 255) 50%);
+        background: -webkit-linear-gradient(
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 50%
+        );
         pointer-events: none;
-    }
-    .wrapper:before{
+      }
+      .wrapper:before {
         content: " ";
         position: absolute;
         top: 0;
         width: 100%;
         height: 48px;
-        background: -webkit-linear-gradient(rgba(255, 255, 255, 1) 50%, rgba(255,255,255, 0) 100%);
+        background: -webkit-linear-gradient(
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0) 100%
+        );
         pointer-events: none;
-    }
+      }
     }
 
     .books-wrapper::-webkit-scrollbar {
@@ -542,7 +549,8 @@ export default {
       width: 100%;
 
       .bottom-wrapper {
-        .recent-wrapper, .setting-wrapper {
+        .recent-wrapper,
+        .setting-wrapper {
           display: flex;
           flex-direction: column;
           align-items: center;

@@ -260,13 +260,13 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
->>>.iconfont {
+<style lang="scss" scoped>
+>>> .iconfont {
   font-family: iconfont;
   font-style: normal;
 }
 
->>>.moon-icon {
+>>> .moon-icon {
   font-family: iconfont;
   font-style: normal;
 }
@@ -278,7 +278,7 @@ export default {
   // height: 350px;
   text-align: left;
   padding: 40px 0 40px 24px;
-  background: #ede7da url('../assets/imgs/themes/popup_1.png') repeat;
+  background: #ede7da url("../assets/imgs/themes/popup_1.png") repeat;
 
   .settings-title {
     font-size: 18px;
@@ -298,7 +298,7 @@ export default {
         list-style: none outside none;
 
         i {
-          font: 12px / 16px PingFangSC-Regular, '-apple-system', Simsun;
+          font: 12px / 16px PingFangSC-Regular, "-apple-system", Simsun;
           display: inline-block;
           min-width: 48px;
           margin-right: 16px;
@@ -332,10 +332,12 @@ export default {
         }
       }
 
-      .font-list, .infinite-loading {
+      .font-list,
+      .infinite-loading {
         margin-top: 28px;
 
-         .font-item, .infinite-loading-item,{
+        .font-item,
+        .infinite-loading-item {
           width: 78px;
           height: 34px;
           cursor: pointer;
@@ -344,24 +346,27 @@ export default {
           text-align: center;
           vertical-align: middle;
           display: inline-block;
-          font: 14px / 34px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+          font: 14px / 34px PingFangSC-Regular, HelveticaNeue-Light,
+            "Helvetica Neue Light", "Microsoft YaHei", sans-serif;
         }
-        .font-item-input{
-           width: 168px;
-           color: #000000;
+        .font-item-input {
+          width: 168px;
+          color: #000000;
         }
         .selected {
           color: #ed4259;
           border: 1px solid #ed4259;
         }
 
-        .font-item:hover, .infinite-loading-item:hover {
+        .font-item:hover,
+        .infinite-loading-item:hover {
           border: 1px solid #ed4259;
           color: #ed4259;
         }
       }
 
-      .font-size, .read-width {
+      .font-size,
+      .read-width {
         margin-top: 28px;
 
         .resize {
@@ -385,7 +390,8 @@ export default {
             }
           }
 
-          .less:hover, .more:hover {
+          .less:hover,
+          .more:hover {
             color: #ed4259;
           }
 
@@ -407,26 +413,28 @@ export default {
 }
 
 .night {
-  >>>.theme-item {
+  >>> .theme-item {
     border: 1px solid #666;
   }
 
-  >>>.selected {
+  >>> .selected {
     border: 1px solid #666;
   }
 
-  >>>.moon-icon {
+  >>> .moon-icon {
     color: #ed4259;
   }
 
-  >>>.font-list, .infinite-loading {
-    .font-item, .infinite-loading-item {
+  >>> .font-list,
+  .infinite-loading {
+    .font-item,
+    .infinite-loading-item {
       border: 1px solid #666;
       background: rgba(45, 45, 45, 0.5);
     }
   }
 
-  >>>.resize {
+  >>> .resize {
     border: 1px solid #666;
     background: rgba(45, 45, 45, 0.5);
 
@@ -437,27 +445,29 @@ export default {
 }
 
 .day {
-  >>>.theme-item {
+  >>> .theme-item {
     border: 1px solid #e5e5e5;
   }
 
-  >>>.selected {
+  >>> .selected {
     border: 1px solid #ed4259;
   }
 
-  >>>.moon-icon {
+  >>> .moon-icon {
     display: inline;
     color: rgba(255, 255, 255, 0.2);
   }
 
-  >>>.font-list, .infinite-loading {
-    .font-item, .infinite-loading-item {
+  >>> .font-list,
+  .infinite-loading {
+    .font-item,
+    .infinite-loading-item {
       background: rgba(255, 255, 255, 0.5);
       border: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
 
-  >>>.resize {
+  >>> .resize {
     border: 1px solid #e5e5e5;
     background: rgba(255, 255, 255, 0.5);
 
@@ -468,7 +478,7 @@ export default {
 }
 
 @media screen and (max-width: 500px) {
-  .settings-wrapper  i {
+  .settings-wrapper i {
     display: flex !important;
     flex-wrap: wrap;
     padding-bottom: 5px !important;

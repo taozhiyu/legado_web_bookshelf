@@ -83,7 +83,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 .cata-wrapper {
   margin: -16px;
   padding: 18px 0 24px 25px;
@@ -110,7 +110,7 @@ export default {
       justify-content: space-between;
 
       .selected {
-        color: #EB4259;
+        color: #eb4259;
       }
 
       .log {
@@ -118,7 +118,8 @@ export default {
         height: 40px;
         cursor: pointer;
         float: left;
-        font: 16px / 40px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+        font: 16px / 40px PingFangSC-Regular, HelveticaNeue-Light,
+          "Helvetica Neue Light", "Microsoft YaHei", sans-serif;
 
         .log-text {
           margin-right: 26px;
@@ -131,13 +132,13 @@ export default {
   }
 
   .night {
-    >>>.log {
+    >>> .log:not(:last-child) {
       border-bottom: 1px solid #666;
     }
   }
 
   .day {
-    >>>.log {
+    >>> .log:not(:last-child) {
       border-bottom: 1px solid #f2f2f2;
     }
   }
@@ -145,7 +146,7 @@ export default {
 
 @media screen and (max-width: 500px) {
   .cata-wrapper .data-wrapper .cata .log {
-  width: 100%;
+    width: 100%;
   }
 }
 </style>

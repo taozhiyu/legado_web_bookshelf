@@ -29,7 +29,11 @@ yarn build
 yarn lint
 #格式化代码
 ```
+注:
  - 调试的时候可以修改.env.development里面的地址连接手机端调试
+ - > 使用 `git update-index --skip-worktree .\.env.development` 可以禁用本机的开发配置上传
+ - 需求：`node@^15`(可以使用[`gnvm`](https://github.com/Kenshin/gnvm)进行版本控制)
+ - > 原因：https://www.npmjs.com/package/node-sass#node-version-support-policy
 
 ## 预览
 

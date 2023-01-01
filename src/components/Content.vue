@@ -1,39 +1,52 @@
+<template>
+  <div v-bind:style="style">
+    <template v-for="a in carray">
+      <p v-if="!/<img[^>]*src/.test(a)" v-html="a" :key="a"></p>
+      <img v-else v-lazy="getImageSrc(a)" :key="a + ''" />
+    </template>
+  </div>
+</template>
 <script>
 import config from "../plugins/config";
 export default {
   name: "pcontent",
   data() {
-    return {};
+    return {
+      style: this.getStyle
+    };
   },
   props: ["carray"],
-  render() {
-    const { fontFamily, fontSize } = this;
-    let style = fontFamily;
-    style.fontSize = fontSize;
-    if (this.show) {
-      return (
-        <div>
-          {this.carray.map((a) => {
-            if (!/<img[^>]*src/.test(a)) {
-              return <p style={style} domPropsInnerHTML={a} />;
-            }
-            return <img v-lazy={this.getImageSrc(a)} />;
-          })}
-        </div>
-      );
-    } else {
-      return <div />;
-    }
-  },
+  // render() {
+  //   const { getStyle } = this;
+  //   if (this.show) {
+  //     return (
+  //       <div>
+  //         {this.carray.map((a) => {
+  //           if (!/<img[^>]*src/.test(a)) {
+  //             return <p style={getStyle} domPropsInnerHTML={a} />;
+  //           }
+  //           return <img v-lazy={this.getImageSrc(a)} />;
+  //         })}
+  //       </div>
+  //     );
+  //   } else {
+  //     return <div />;
+  //   }
+  // },
   computed: {
     show() {
       return this.$store.state.showContent;
     },
-    fontFamily() {
+    getStyle() {
+      let style = { fontSize: this.fontSize };
       if (this.$store.state.config.font >= 0) {
-        return config.fonts[this.$store.state.config.font];
+        return Object.assign(
+          config.fonts[this.$store.state.config.font],
+          style
+        );
       }
-      return { fontFamily: this.$store.state.config.customFontName };
+      style.fontFamily = this.$store.state.config.customFontName;
+      return style;
     },
     fontSize() {
       return this.$store.state.config.fontSize + "px";
@@ -48,6 +61,7 @@ export default {
   watch: {
     fontSize() {
       let that = this;
+      that.style = that.getStyle;
       that.$store.commit("setShowContent", false);
       this.$nextTick(() => {
         that.$store.commit("setShowContent", true);
@@ -57,7 +71,7 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
+<style lang="scss" scoped>
 p {
   display: block;
   word-wrap: break-word;
