@@ -25,11 +25,11 @@ Vue.use(VueLazyload, {
   loading: require("./assets/imgs/loading.gif"),
   attempt: 1,
   filter: {
-     //判断链接是否含有Urloption ,{...}
-     dynamicReplace(listener, _) {
-       const { src } = listener;
-       listener.src = /,\s*\{.*\}$/.test(src) ? getImageFromLegado(src) : src;
-     }
+    //判断链接是否含有Urloption ,{...}
+    dynamicReplace(listener, _) {
+      const { src } = listener;
+      listener.src = /,\s*\{.*\}$/.test(src) ? getImageFromLegado(src) : src;
+    },
   },
   adapter: {
     error({ src, el }) {

@@ -263,10 +263,11 @@ export default {
   computed: {
     shelf() {
       let shelf = this.$store.state.shelf;
-      return shelf.filter(book => {
-        if (this.search == "") return true
-        return book.name.includes(this.search) ||
-        book.author.includes(this.search)
+      return shelf.filter((book) => {
+        if (this.search == "") return true;
+        return (
+          book.name.includes(this.search) || book.author.includes(this.search)
+        );
       });
     },
     connectStatus() {
