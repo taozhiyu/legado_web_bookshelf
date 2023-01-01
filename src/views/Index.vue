@@ -25,12 +25,14 @@
               :type="readingRecent.name == '尚无阅读记录' ? 'warning' : 'tip'"
               class="recent-book"
               @click="
-                toDetail(
-                  readingRecent.url,
-                  readingRecent.name,
-                  readingRecent.author,
-                  readingRecent.chapterIndex
-                )
+                readingRecent.url
+                  ? toDetail(
+                      readingRecent.url,
+                      readingRecent.name,
+                      readingRecent.author,
+                      readingRecent.chapterIndex
+                    )
+                  : $message.error('暂无阅读记录')
               "
               :class="{ 'no-point': readingRecent.url == '' }"
             >
@@ -123,6 +125,7 @@
 <script>
 import "../assets/fonts/shelffont.css";
 import ajax from "../plugins/ajax";
+import { Message } from "element-ui";
 
 export default {
   data() {
@@ -283,13 +286,12 @@ export default {
       return this.$store.state.miniInterface;
     },
     navigationClass() {
-      return !this.showMenu || (this.showMenu && this.showNavigation)
-        ? {
-            display: "block",
-          }
-        : {
-            display: "none",
-          };
+      return {
+        display:
+          !this.showMenu || (this.showMenu && this.showNavigation)
+            ? "block"
+            : "none",
+      };
     },
   },
 };
@@ -391,7 +393,7 @@ export default {
   }
 
   .shelf-wrapper {
-    padding: 48px 48px;
+    padding: 0 48px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -414,6 +416,8 @@ export default {
         grid-template-columns: repeat(auto-fill, 380px);
         justify-content: space-around;
         grid-gap: 10px;
+        margin: 48px 0;
+
 
         .book {
           user-select: none;
@@ -488,6 +492,24 @@ export default {
       .wrapper:last-child {
         margin-right: auto;
       }
+      .wrapper:after{
+        content: " ";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 48px;
+        background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, rgb(255 255 255) 50%);
+        pointer-events: none;
+    }
+    .wrapper:before{
+        content: " ";
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 48px;
+        background: -webkit-linear-gradient(rgba(255, 255, 255, 1) 50%, rgba(255,255,255, 0) 100%);
+        pointer-events: none;
+    }
     }
 
     .books-wrapper::-webkit-scrollbar {
