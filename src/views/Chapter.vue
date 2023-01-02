@@ -632,7 +632,8 @@ export default {
   }
 
   .chapter {
-    font-family: 'Microsoft YaHei', PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', sans-serif;
+    font-family: "Microsoft YaHei", PingFangSC-Regular, HelveticaNeue-Light,
+      "Helvetica Neue Light", sans-serif;
     text-align: left;
     padding: 0 65px;
     min-height: 100vh;
@@ -641,26 +642,29 @@ export default {
 
     >>> .el-icon-loading {
       font-size: 36px;
-      color: #B5B5B5;
+      color: #b5b5b5;
     }
 
     >>> .el-loading-text {
       font-weight: 500;
-      color: #B5B5B5;
+      color: #b5b5b5;
     }
 
     .content {
       font-size: 18px;
       line-height: 1.8;
       overflow: hidden;
-      font-family: 'Microsoft YaHei', PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', sans-serif;
+      font-family: "Microsoft YaHei", PingFangSC-Regular, HelveticaNeue-Light,
+        "Helvetica Neue Light", sans-serif;
 
       .title {
         margin-bottom: 57px;
-        font: 24px / 32px PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif;
+        font: 24px / 32px PingFangSC-Regular, HelveticaNeue-Light,
+          "Helvetica Neue Light", "Microsoft YaHei", sans-serif;
       }
 
-      .bottom-bar, .top-bar {
+      .bottom-bar,
+      .top-bar {
         height: 64px;
       }
     }

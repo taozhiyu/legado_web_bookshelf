@@ -12,7 +12,7 @@ export default {
   name: "pcontent",
   data() {
     return {
-      style: this.getStyle
+      style: this.getStyle,
     };
   },
   props: ["carray"],
@@ -78,9 +78,9 @@ p {
   word-break: break-all;
 }
 img {
-  margin-left:auto;
-  margin-right:auto;
-  display:block;
-  width:100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
 }
 </style>
