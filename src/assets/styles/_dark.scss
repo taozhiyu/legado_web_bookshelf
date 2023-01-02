@@ -1,0 +1,39 @@
+@mixin colors {
+    
+    --app-background-color: rgb(41 42 45);
+    --app-text-color: #ccc;
+    --navigation-wrapper-background-color: #202124;
+    --navigation-sub-title-color: #9aa0a6;
+    --el-input__inner-border-color: #494c50;
+    --el-loading-color: #b5b5b5;
+    --book-name-color: #999;
+    --book-hover-background-color: rgba(0, 0, 0, 0.1);
+    --book-subtitle-color: #949494;
+    --book-wrapper-background-color-0: rgba(0, 0, 0, 0);
+    --book-wrapper-background-color-1: rgba(41, 42, 45,1);
+    --last-chapter-color: #969ba3;
+    --loading-background-color: #f7f7f7;
+    --chapter-bar-breadcrumb-color: #606266;
+
+    --popup-inner-shadow-color: rgba(0, 0, 0, 0.48);
+    --popup-outer-shadow-color: rgba(0, 0, 0, 0.16);
+
+    --tool-icon-border-color: #444;
+    --tool-icon-color: #666;
+    --tool-icon-text-color: #666;
+
+    --chapter-border-color: #444;
+    --chapter-color: #666;
+
+    --poper_arrow_color: #666;
+}
+
+html[data-theme='dark'] {
+    @include colors;
+}
+
+@media (prefers-color-scheme: dark) {
+    html[data-theme='auto'] {
+        @include colors;
+    }
+}

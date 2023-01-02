@@ -2,7 +2,6 @@
   <div
     class="chapter-wrapper"
     :style="bodyTheme"
-    :class="{ night: isNight, day: !isNight }"
     @click="showToolBar = !showToolBar"
   >
     <div class="tool-bar" :style="leftBarTheme">
@@ -128,7 +127,7 @@ export default {
       lock: true,
       text: "正在获取内容",
       spinner: "el-icon-loading",
-      background: "rgba(0,0,0,0)",
+      background: "transparent",
     });
     //获取书籍数据
     const that = this;
@@ -191,6 +190,9 @@ export default {
     },
     theme(theme) {
       this.isNight = theme == 6;
+      document
+        .querySelector("html")
+        .setAttribute("data-theme", this.isNight ? "dark" : "light");
     },
     bodyColor(color) {
       this.bodyTheme.background = color;
@@ -233,6 +235,7 @@ export default {
       scrollObserve: null,
       readingObserve: null,
       chapterIndex: 0,
+      isNight: this.$store.state.config.theme == 6,
     };
   },
   computed: {
@@ -275,9 +278,6 @@ export default {
     },
     popupColor() {
       return config.themes[this.config.theme].popup;
-    },
-    isNight() {
-      return this.$store.state.config.theme == 6;
     },
     readWidth() {
       if (!this.$store.state.miniInterface) {
@@ -349,7 +349,7 @@ export default {
             lock: true,
             text: "正在获取内容",
             spinner: "el-icon-loading",
-            background: "rgba(0,0,0,0)",
+            background: "transparent",
           });
         }
         //强制滚回顶层
@@ -534,16 +534,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
->>> .pop-setting {
+/deep/ .pop-setting {
   margin-left: 68px;
   top: 0;
 }
 
->>> .pop-cata {
+/deep/ .pop-cata {
   margin-left: 10px;
 }
 
->>> .scroll-container {
+/deep/ .scroll-container {
   overflow-y: hidden !important;
 }
 
@@ -552,7 +552,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  >>> .no-point {
+  /deep/ .no-point {
     pointer-events: none;
   }
 
@@ -626,7 +626,7 @@ export default {
     .el-breadcrumb {
       .item {
         font-size: 14px;
-        color: #606266;
+        color: var(--chapter-bar-breadcrumb-color);
       }
     }
   }
@@ -640,14 +640,14 @@ export default {
     width: 670px;
     margin: 0 auto;
 
-    >>> .el-icon-loading {
+    /deep/ .el-icon-loading {
       font-size: 36px;
-      color: #b5b5b5;
+      color: var(--el-loading-color);
     }
 
-    >>> .el-loading-text {
+    /deep/ .el-loading-text {
       font-weight: 500;
-      color: #b5b5b5;
+      color: var(--el-loading-color);
     }
 
     .content {
@@ -671,49 +671,29 @@ export default {
   }
 }
 
-.day {
-  >>> .popup {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12), 0 0 6px rgba(0, 0, 0, 0.04);
+.chapter-wrapper {
+  /deep/ .popup {
+    box-shadow: 0 2px 4px var(--popup-inner-shadow-color),
+      0 0 6px var(--popup-outer-shadow-color);
   }
 
-  >>> .tool-icon {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+  /deep/ .tool-icon {
+    border: 1px solid var(--tool-icon-border-color);
     margin-top: -1px;
-    color: #000;
+    color: var(--tool-icon-color);
 
     .icon-text {
-      color: rgba(0, 0, 0, 0.4);
+      color: var(--tool-icon-text-color);
     }
   }
 
-  >>> .chapter {
-    border: 1px solid #d8d8d8;
-    color: #262626;
-  }
-}
-
-.night {
-  >>> .popup {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.48), 0 0 6px rgba(0, 0, 0, 0.16);
+  /deep/ .chapter {
+    border: 1px solid var(--chapter-border-color);
+    color: var(--chapter-color);
   }
 
-  >>> .tool-icon {
-    border: 1px solid #444;
-    margin-top: -1px;
-    color: #666;
-
-    .icon-text {
-      color: #666;
-    }
-  }
-
-  >>> .chapter {
-    border: 1px solid #444;
-    color: #666;
-  }
-
-  >>> .popper__arrow {
-    background: #666;
+  /deep/ .popper__arrow {
+    background: var(--poper_arrow_color);
   }
 }
 

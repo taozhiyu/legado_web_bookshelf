@@ -1,7 +1,5 @@
 <template>
   <div class="index-wrapper">
-    <!-- <div class="navigation-wrapper" :style="navigationClass"> -->
-    <!-- 之前的 style 备份 -->
     <div class="navigation-wrapper">
       <div class="navigation-title-wrapper">
         <div class="navigation-title">阅读</div>
@@ -63,6 +61,13 @@
             <img :src="require('../assets/imgs/github.png')" alt="" />
           </div>
         </a>
+        <el-button
+          type="text"
+          class="iconfont"
+          @click="toDetail('https://www.legado.app/', 'Legado', 'gedoor', 0)"
+        >
+        
+        </el-button>
       </div>
     </div>
     <div class="shelf-wrapper" ref="shelfWrapper">
@@ -137,6 +142,7 @@ export default {
         url: "",
         chapterIndex: 0,
       },
+      Message,
     };
   },
   mounted() {
@@ -153,7 +159,7 @@ export default {
       lock: true,
       text: "正在获取书籍信息",
       spinner: "el-icon-loading",
-      background: "rgb(247,247,247)",
+      background: "var(--loading-background-color)",
     });
     const that = this;
     ajax
@@ -308,7 +314,7 @@ export default {
     width: 260px;
     min-width: 260px;
     padding: 48px 36px;
-    background-color: #f7f7f7;
+    background-color: var(--navigation-wrapper-background-color);
 
     .navigation-title {
       font-size: 24px;
@@ -321,7 +327,7 @@ export default {
       font-weight: 300;
       font-family: FZZCYSK;
       margin-top: 16px;
-      color: #b1b1b1;
+      color: var(--navigation-sub-title-color);
     }
 
     .search-wrapper {
@@ -329,9 +335,9 @@ export default {
         border-radius: 50%;
         margin-top: 24px;
 
-        >>> .el-input__inner {
+        /deep/ .el-input__inner {
           border-radius: 50px;
-          border-color: #e3e3e3;
+          border-color: var(--el-input__inner-border-color);
         }
       }
     }
@@ -341,7 +347,7 @@ export default {
 
       .recent-title {
         font-size: 14px;
-        color: #b1b1b1;
+        color: var(--navigation-title-color);
         font-family: FZZCYSK;
       }
 
@@ -365,7 +371,7 @@ export default {
 
       .setting-title {
         font-size: 14px;
-        color: #b1b1b1;
+        color: var(--navigation-title-color);
         font-family: FZZCYSK;
       }
 
@@ -398,14 +404,14 @@ export default {
     display: flex;
     flex-direction: column;
 
-    >>> .el-icon-loading {
+    /deep/ .el-icon-loading {
       font-size: 36px;
-      color: #b5b5b5;
+      color: var(--el-loading-color);
     }
 
-    >>> .el-loading-text {
+    /deep/ .el-loading-text {
       font-weight: 500;
-      color: #b5b5b5;
+      color: var(--el-loading-color);
     }
 
     .books-wrapper {
@@ -451,7 +457,7 @@ export default {
               width: fit-content;
               font-size: 16px;
               font-weight: 700;
-              color: #33373d;
+              color: var(--book-name-color);
             }
 
             .sub {
@@ -459,7 +465,7 @@ export default {
               flex-direction: row;
               font-size: 12px;
               font-weight: 600;
-              color: #6b6b6b;
+              color: var(--book-subtitle-color);
 
               .dot {
                 margin: 0 7px;
@@ -469,7 +475,7 @@ export default {
             .intro,
             .dur-chapter,
             .last-chapter {
-              color: #969ba3;
+              color: var(--last-chapter-color);
               font-size: 13px;
               margin-top: 3px;
               font-weight: 500;
@@ -485,7 +491,7 @@ export default {
         }
 
         .book:hover {
-          background: rgba(0, 0, 0, 0.1);
+          background: var(--book-hover-background-color);
           transition-duration: 0.5s;
         }
       }
@@ -493,6 +499,7 @@ export default {
       .wrapper:last-child {
         margin-right: auto;
       }
+
       .wrapper:after {
         content: " ";
         position: absolute;
@@ -500,11 +507,13 @@ export default {
         width: 100%;
         height: 48px;
         background: -webkit-linear-gradient(
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 1) 50%
+          var(--book-wrapper-background-color-0) 0%,
+          var(--book-wrapper-background-color-1) 50%
         );
         pointer-events: none;
+        z-index: 99999;
       }
+
       .wrapper:before {
         content: " ";
         position: absolute;
@@ -512,10 +521,11 @@ export default {
         width: 100%;
         height: 48px;
         background: -webkit-linear-gradient(
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 0) 100%
+          var(--book-wrapper-background-color-1) 50%,
+          var(--book-wrapper-background-color-0) 100%
         );
         pointer-events: none;
+        z-index: 99999;
       }
     }
 
@@ -530,20 +540,20 @@ export default {
     overflow-x: hidden;
     flex-direction: column;
 
-    >>> .navigation-title-wrapper {
+    /deep/ .navigation-title-wrapper {
       white-space: nowrap;
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
     }
 
-    >>> .bottom-wrapper {
+    /deep/ .bottom-wrapper {
       display: flex;
       flex-direction: row;
       justify-content: space-around;
     }
 
-    >>> .navigation-wrapper {
+    /deep/ .navigation-wrapper {
       padding: 20px 24px;
       box-sizing: border-box;
       width: 100%;
@@ -562,7 +572,7 @@ export default {
       }
     }
 
-    >>> .shelf-wrapper {
+    /deep/ .shelf-wrapper {
       padding: 0;
 
       .shelf-title {
@@ -584,5 +594,10 @@ export default {
       }
     }
   }
+}
+
+/deep/ .iconfont {
+  font-family: iconfont;
+  font-style: normal;
 }
 </style>

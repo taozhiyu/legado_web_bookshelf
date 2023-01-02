@@ -16,11 +16,10 @@ export default {
   },
 };
 </script>
-
+<style lang="scss">
+@import "./assets/styles/index.scss";
+</style>
 <style lang="scss" scoped>
-@import "./assets/styles/dark.scss";
-@import "./assets/styles/light.scss";
-
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -28,5 +27,6 @@ export default {
   color: var(--app-text-color);
   margin: 0;
   height: 100%;
+  background-color: var(--app-background-color);
 }
 </style>

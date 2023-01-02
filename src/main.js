@@ -9,6 +9,8 @@ import vuex from "./plugins/vuex";
 import VueLazyload from "vue-lazyload";
 import { getImageFromLegado } from "./plugins/utils";
 
+// import "./assets/styles/index.scss";
+
 Vue.config.productionTip = false;
 new Vue({
   router,

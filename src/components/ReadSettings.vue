@@ -17,9 +17,10 @@
             ref="themes"
             @click="setTheme(index)"
             :class="{ selected: selectedTheme == index }"
-            ><em v-if="index < 6" class="iconfont">&#58980;</em
-            ><em v-else class="moon-icon">{{ moonIcon }}</em></span
           >
+            <em v-if="index < 6" class="iconfont">&#58980;</em>
+            <em v-else class="moon-icon">{{ moonIcon }}</em>
+          </span>
         </li>
         <li class="font-list">
           <i>正文字体</i>
@@ -34,7 +35,11 @@
         </li>
         <li class="font-list">
           <i>自定字体</i>
-          <el-tooltip effect="dark" content="自定义的字体名称" placement="top">
+          <el-tooltip
+            :effect="isNight ? 'dark' : 'light'"
+            content="自定义的字体名称"
+            placement="top"
+          >
             <input
               type="text"
               class="font-item font-item-input"
@@ -211,6 +216,10 @@ export default {
       let config = this.config;
       config.theme = theme;
       this.saveConfig(config);
+
+      document
+        .querySelector("html")
+        .setAttribute("data-theme", this.isNight ? "dark" : "light");
     },
     setFont(font) {
       let config = this.config;
@@ -261,12 +270,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
->>> .iconfont {
-  font-family: iconfont;
-  font-style: normal;
-}
 
->>> .moon-icon {
+/deep/ .moon-icon {
   font-family: iconfont;
   font-style: normal;
 }
@@ -413,19 +418,19 @@ export default {
 }
 
 .night {
-  >>> .theme-item {
+  /deep/ .theme-item {
     border: 1px solid #666;
   }
 
-  >>> .selected {
+  /deep/ .selected {
     border: 1px solid #666;
   }
 
-  >>> .moon-icon {
+  /deep/ .moon-icon {
     color: #ed4259;
   }
 
-  >>> .font-list,
+  /deep/ .font-list,
   .infinite-loading {
     .font-item,
     .infinite-loading-item {
@@ -434,7 +439,7 @@ export default {
     }
   }
 
-  >>> .resize {
+  /deep/ .resize {
     border: 1px solid #666;
     background: rgba(45, 45, 45, 0.5);
 
@@ -445,20 +450,20 @@ export default {
 }
 
 .day {
-  >>> .theme-item {
+  /deep/ .theme-item {
     border: 1px solid #e5e5e5;
   }
 
-  >>> .selected {
+  /deep/ .selected {
     border: 1px solid #ed4259;
   }
 
-  >>> .moon-icon {
+  /deep/ .moon-icon {
     display: inline;
     color: rgba(255, 255, 255, 0.2);
   }
 
-  >>> .font-list,
+  /deep/ .font-list,
   .infinite-loading {
     .font-item,
     .infinite-loading-item {
@@ -467,7 +472,7 @@ export default {
     }
   }
 
-  >>> .resize {
+  /deep/ .resize {
     border: 1px solid #e5e5e5;
     background: rgba(255, 255, 255, 0.5);
 

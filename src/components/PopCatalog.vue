@@ -132,13 +132,13 @@ export default {
   }
 
   .night {
-    >>> .log:not(:last-child) {
+    /deep/ .log:not(:last-child) {
       border-bottom: 1px solid #666;
     }
   }
 
   .day {
-    >>> .log:not(:last-child) {
+    /deep/ .log:not(:last-child) {
       border-bottom: 1px solid #f2f2f2;
     }
   }
